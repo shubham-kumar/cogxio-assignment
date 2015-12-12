@@ -1,15 +1,4 @@
 ﻿var app = angular.module('mainApp', ['ui.bootstrap']);
-/*app.config(['$routeProvider',function($routeProvider){
-	$routeProvider.when('/biding',{
-	    title:'Map',
-	    templateUrl:'gmap.html',
-	    controller:'gmapCtrl'
-	  }).when('/',{
-			title: 'Home',
-	        templateUrl: 'index.html',
-	        controller: 'mainCtrl'
-		});
-}]);*/
 app.filter('orderByRating', function(){
 	return function(input, attribute) {
 		var array = [];
@@ -17,8 +6,8 @@ app.filter('orderByRating', function(){
 			array.push(input[objectKey]);
 		}
 		array.sort(function(a, b){
-			a = parseInt(a[attribute]);
-			b = parseInt(b[attribute]);
+			a = parseFloat(a[attribute]);
+			b = parseFloat(b[attribute]);
 			return b - a;
 		});
 		return array;
@@ -58,7 +47,3 @@ app.controller('mainCtrl', ['$scope', '$http','$location' , function ($scope, $h
 	};
 
 }]);
-
-/*app.controller('gmapCtrl',function($scope,$rootScope){
-
-});*/

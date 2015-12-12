@@ -10,10 +10,9 @@ public class DatabaseUtil {
 	public Connection setConnection() throws SQLException,ClassNotFoundException {
 		String driverName = "com.mysql.jdbc.Driver";
 		Class.forName(driverName);
-		String url = "jdbc:mysql://mysql14362-cogixo.ind-cloud.everdata.com/cogxio";
+		String url = "jdbc:mysql://localhost:3306/cogxio";
 		String uid = "root";
-		String pwd = "NxwqUSDwsk";
-
+		String pwd = "root";
 		con = DriverManager.getConnection(url, uid, pwd);
 		
 		return con;
