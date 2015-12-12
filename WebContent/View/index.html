@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+<meta charset="UTF-8">
+<title>Place Lookup</title>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href="style/main.css" rel="stylesheet" />
+</head>
+<body ng-controller="mainCtrl">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-4" id="header">Place Lookup</div>
+				<div class="col-md-4" id="header-side">-searching made easy!</div>
+				<div class="col-md-3" id="totalPlaces">Total
+					Places:&nbsp;{{totalPlace.total_places}}</div>
+			</div>
+			<hr />
+			<div class="col-md-6">
+				<div class="input-group" style="margin: -40px 0 0 -10px;">
+				  	<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+				  	<input placeholder="Search (by Name or Category)" type="text" style="width: 50%;height: 45px;" typeahead-on-select="setSearchData()" ng-model="searchValue" typeahead="plac.name || plac.category for plac in allNameCatgs | filter:$viewValue" />
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="col-md-9" ng-repeat="place in places" id="menuList">
+				<div>
+					<i class="fa fa-angle-double-right" style="font-size: 35px;float: left;"></i> 
+					<span style="float: left;padding: 5px;margin-top: 5px;">
+					<b class="productName">{{place.name}}</b>
+					<p class="baseDetail">Category:&nbsp;{{place.category}} | Locate on Map:
+					<a href="https://www.google.com/maps?q={{place.latitude}},{{place.longitude}}" target="_blank"><i class="glyphicon glyphicon-map-marker"></i></a></p>
+					</span>
+				</div>
+				<div style="float: right;margin-top: -15px;">
+					{{place.rating}}
+					<div class="prdct-stars" title="1 Star">
+						★★★★★
+						<div class="rating" style='width: {{place.rating*20}}%'>★★★★★</div>
+					</div>
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
+	<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.4.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+	<script src="script/app.js"></script>
+</body>
+</html>
